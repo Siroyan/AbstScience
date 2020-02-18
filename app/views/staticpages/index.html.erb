@@ -1,0 +1,56 @@
+<header>
+	<div class="text-center py-5 cover">
+		<h1 class="container display-sm-1 display-lg-4 h-50 py-2">あぶすと</h1>
+		<h4 class="container text-center py-2">
+			論文を自分なりにまとめることができるメモサービス
+		</h4>
+		<% if user_signed_in? %>
+			<%= link_to 'マイページ', 'abstracts#index', class: "btn btn-info mt-2", method: :get %>
+			<%= link_to 'ログアウト', destroy_user_session_path, class: "btn btn-warning mt-2", method: :delete %>
+		<% else %>
+			<%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary mt-2", method: :get %>
+			<%= link_to 'ログイン', new_user_session_path, class: "btn btn-danger mt-2", method: :get %>
+		<% end %>
+	</div>
+</header>
+<div class="container">
+	<main>
+		<style>
+			.cover {
+				background: url(/images/bg30.jpg);
+				background-size: cover;
+			}
+		</style>
+		<section class="py-5 bg-white">
+			<div class="container">
+				<div class="mb-5 row">
+					<div class="col-12 col-md-8 order-sm-1">
+						<h3>何度も論文を読みたいですか？</h3>
+						<p>
+							論文を読むのは大変ではないでしょうか。辞書を片手に、何ページにも及ぶ論文を読み込む作業は、誰しも好きではないと思います。<br>
+							しかし、自分の研究に直結するような先行研究の論文があれば、きっちり読み込まなければいけない。しかも、そういった論文は何本もある。<br>
+							一度読み込んだ論文でさえ、数カ月もすれば、「あの実験の結果って、どの論文のどこに書いてあったっけ？」となってしまうこともしばしば。<br>
+							しかし、あぶすとを使えば、自分なりにその論文をまとめたメモを残しておくことができます。
+						</p>
+					</div>
+					<div class="col-12 col-md-4 order-sm-2">
+						<img src="" alt="">
+					</div>
+				</div>
+
+				<div class="mb-5 row">
+					<div class="col-12 col-md-8 order-sm-2">
+						<h3>こんなことができます</h3>
+						<p>
+							メモをmarkdown形式で残せます。論文のタイトルや著者、DOIと紐付けて保存できるため、後からでも簡単にメモを見つけることができます。
+							もちろんスマホからでもアクセスできます。
+						</p>
+					</div>
+					<div class="col-12 col-md-4 order-sm-1">
+						<img src="" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</div>

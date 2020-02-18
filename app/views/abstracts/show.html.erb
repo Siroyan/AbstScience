@@ -1,0 +1,27 @@
+<div class="container">
+	<main>
+		<section class="py-5">
+			<h1 class="text-center mb-5"><%= @abstract.title %></h1>
+			<h2 class="text-left">基本情報</h2>
+			<dl class="row">
+				<dt class="col-sm-3">著者</dt>
+				<dt class="col-sm-9"><%= @abstract.author %></dt>
+
+				<dt class="col-sm-3">DOI</dt>
+				<dt class="col-sm-9"><%= @abstract.doi %></dt>
+
+				<dt class="col-sm-3">作成日</dt>
+				<dt class="col-sm-9"><%= @abstract.created_at.strftime('%Y/%m/%d') %></dt>
+
+				<dt class="col-sm-3">更新日</dt>
+				<dt class="col-sm-9"><%= @abstract.updated_at.strftime('%Y/%m/%d') %></dt>
+			</dl>
+			<h2 class="text-left">あぶすと</h2>
+			<p>
+				<%= simple_format @abstract.body %>
+			</p>
+			<%= link_to '編集', edit_abstract_path(@abstract), class: "btn btn-primary" %>
+			<%= link_to '削除', abstract_path(@abstract), method: :delete, class: "btn btn-danger", data: {confirm: '削除しますか?'} %>
+		</section>
+	</main>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+	<main>
+		<section class="py-5">
+			<h2 class="text-center mb-5">パスワードを忘れてしまった方へ</h2>
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+				<%= render "devise/shared/error_messages", resource: resource %>
+				<div class="form-group mb-3">
+					<%= f.label :email, 'メールアドレス' %><br />
+					<div class="input-group">
+						<%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'%>
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "パスワードリセットのリンクを送る", class: 'btn btn-primary w-100' %>
+				</div>
+			<% end %>
+		</section>
+	</main>
+</div>

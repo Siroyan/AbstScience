@@ -1,0 +1,55 @@
+<div class="container">
+	<main>
+		<section class="py-5">
+			<h2 class="text-center mb-5">マイページ</h2>
+			<div class="row">
+				<div class="table-responsive col-sm-12 col-md-4 mb-3 overflow-hidden">
+					<h5 class="text-center">基本情報</h5>
+					<table class="table">
+						<tr>
+							<th class="text-nowrap">メールアドレス</th>
+							<td><%= @user.email %></td>
+						</tr>
+						<tr>
+							<th class="text-nowrap">投稿したあぶすと</th>
+							<td><%= @abstracts.size %></td>
+						</tr>
+					</table>
+					<%= link_to '運営にコンタクト', "/", class: "btn btn-info w-100 mb-2 disabled" %>
+					<%= link_to 'ログアウト', destroy_user_session_path, class: "btn btn-warning w-100 mb-2", method: :delete %>
+					<%= link_to 'アカウント削除', "/users", class: "btn btn-danger w-100 mb-2", method: :delete, data: {confirm: '本当に削除しますか?'} %>
+				</div>
+
+				<div class="col-sm-12 col-md-8">
+					<%= link_to '新規投稿', new_abstract_path, class: "btn btn-primary w-100 mb-5" %>
+
+					<h5 class="text-center">投稿したあぶすと</h5>
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="thead-dark">
+							<tr>
+								<th class="text-nowrap">Title</th>
+								<th class="text-nowrap">Author</th>
+								<th class="text-nowrap">DOI</th>
+							</tr>
+							</thead>
+							<% if @abstracts.any? %>
+								<% @abstracts.each do |abstract| %>
+									<tr>
+										<td class="w-60 overflow-hidden"><%= link_to abstract.title, abstract %></td>
+										<td class="w-20 overflow-hidden"><%= abstract.author %></td>
+										<td class="w-20 overflow-hidden"><%= abstract.doi %></td>
+									</tr>
+								<% end %>
+							<% else %>
+								<tr>
+									<td colspan="5" class="text-nowrap text-info text-center">まだ、あぶすとを投稿していません</td>
+								</tr>
+							<% end %>
+						</table>
+					</div> <!-- table-responsive -->
+				</div>
+			</div>
+		</section>
+	</main>
+</div>

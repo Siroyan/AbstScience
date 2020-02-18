@@ -1,0 +1,29 @@
+<header>
+	<div class="container">
+		<nav class="navbar navbar-expand-sm navbar-light">
+
+			<a class="navbar-brand" href="/">
+				<i class="fas fa-book"></i>
+				あぶすと
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="menu">
+				<div class="navbar-nav">
+					<% if user_signed_in? %>
+						<%= link_to 'マイページ', 'abstracts#index', class: "nav-item nav-link", method: :get %>
+						<%= link_to 'ログアウト', destroy_user_session_path, class: "nav-item nav-link", method: :delete %>
+						<span class="navbar-text"><%= current_user.email %>さんがログイン中</span>
+					<% else %>
+						<%= link_to '新規登録', new_user_registration_path, class: "nav-item nav-link", method: :get %>
+						<%= link_to 'ログイン', new_user_session_path, class: "nav-item nav-link", method: :get %>
+					<% end %>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+</header>
